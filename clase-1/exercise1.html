@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Exercise Impl</title>
+    <style>
+        .box{
+            color: peru;
+            background-color: lightsteelblue;
+            border: 1px solid grey;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Exercise 1</h1>
+    <h3 id="subtitle">This text is from HTML</h3>
+
+    <ul>
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+        <li>Item4</li>
+        <li>Item5</li>
+    </ul>
+
+    <script>
+
+        // Minimal access to DOM
+        var title = document.querySelector('h1')
+        title.innerHTML += '- See more on <a href=#>www.site.com</a>'
+        title.classList.add('box')
+
+        /* var subtitle = document.getElementsByClassName('subtitle')
+        subtitle.innerText += 'This text is from JS' (check why fails) */
+
+        var subtitle = document.getElementById('subtitle')
+        //subtitle.innerText += ' and This text is from JS'
+        subtitle.innerHTML += '<em> and This text is from JS </em>'
+
+        var items = document.querySelectorAll('li')
+        console.log(items);
+
+        // Advanced access to DOM
+        var paragraph = document.createElement('p')
+        paragraph.innerText = 'DOM implementation example'
+        paragraph.style.color = 'grey'
+
+        // Longhand
+        var body = document.getElementsByTagName('body')[0]
+        body.appendChild(paragraph)
+
+        // Shorthand
+        //document.body.appendChild(paragraph)
+
+        // Question: Can I add a class? Why not?
+        var list = document.querySelector('ul')
+        list.id = 'list'
+      
+    </script>
+</body>
+</html>
