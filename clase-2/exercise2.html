@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Exercise Impl 2</title>
+    <style>
+        h2{
+            color: crimson;
+        }
+    </style>
+</head>
+<body>
+    <h2>Create a list with 10 elements into. Use for loop and only use append once</h2>
+
+    
+    <script>
+        /* Less performance */
+        /* var list = document.createElement('ul')
+
+        for(var i = 0; i < 10; i++){
+            var item = document.createElement('li')
+            item.innerText = `Item${i}`
+            list.appendChild(item)
+        }
+
+        document.body.appendChild(list) */
+
+        /* More performance */
+        var list = document.createElement('ul')
+
+        for(var i = 0; i < 10; i++){
+            list.innerHTML += `<li>Item${i}</li>`
+        }
+
+        document.body.appendChild(list)
+
+
+    </script>
+
+</body>
+</html>
