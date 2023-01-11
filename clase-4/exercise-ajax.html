@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Ajax - XMLHttpRequest</title>
+    <style>
+        .container{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Ajax Exercise 1 - XMLHttpRequest</h1>
+    <main></main>
+    <button>Load template</button>
+
+    <script>
+        let templateIsLoad = false
+        let main = document.querySelector('main')
+        let btnLoad = document.querySelector('button')
+
+        btnLoad.addEventListener('click', () => {
+
+            if(!templateIsLoad){
+
+                let xhr = new XMLHttpRequest()
+                xhr.open('GET', 'template.html')
+
+                // First configure event
+                xhr.addEventListener('load', () => {
+                    if(xhr.status == 200){
+
+                        let template = xhr.response
+                        let container = document.createElement('div')
+                        container.innerHTML = template
+                        container.classList = 'container'
+                        //document.body.appendChild(container)
+                        main.appendChild(container)
+
+                        templateIsLoad = true
+                    }
+                    else {
+                        console.error(`Communication fails, [${xhr.status}]`);
+                    }   
+                })
+                xhr.send()
+            }
+        })
+
+    </script>
+</body>
+</html>
