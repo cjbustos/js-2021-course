@@ -4,33 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Ajax - XMLHttpRequest</title>
+    <title>Exercise Ajax Refactor - XMLHttpRequest</title>
     <style>
         .container{
+            color: grey;
+        }
+        button {
             color: green;
         }
     </style>
 </head>
 <body>
     
-    <h1>Ajax Exercise 1 - XMLHttpRequest</h1>
+    <h1>Ajax Exercise 1 Refactor - XMLHttpRequest</h1>
     <main></main>
-    <button>Load template</button>
-    <button>Remove template</button>
+    <button>Show</button>
 
     <script>
         let templateIsLoad = false
 
         let main = document.querySelector('main')
-        let btnLoad = document.querySelectorAll('button')[0]
-        let btnRemove = document.querySelectorAll('button')[1]
-
-        /* Remove content event */
-        btnRemove.addEventListener('click', () => {
-            let div = document.querySelector('div')
-            main.removeChild(div)
-            templateIsLoad = false
-        })
+        let btnLoad = document.querySelector('button')
 
         /* Load content event */
         btnLoad.addEventListener('click', () => {
@@ -51,6 +45,8 @@
                         //document.body.appendChild(container)
                         main.appendChild(container)
 
+                        btnLoad.innerText = 'Hide'
+                        btnLoad.style.color = 'blue'
                         templateIsLoad = true
                     }
                     else {
@@ -58,6 +54,13 @@
                     }   
                 })
                 xhr.send()
+            } else {
+                let btnRemove = document.querySelector('button')
+                let div = document.querySelector('div')
+                main.removeChild(div)
+                btnRemove.innerText = 'Show'
+                btnRemove.style.color = 'green'
+                templateIsLoad = false
             }
         })
 
